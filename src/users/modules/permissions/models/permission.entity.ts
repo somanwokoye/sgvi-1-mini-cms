@@ -1,19 +1,16 @@
 import { BaseAbstractEntity } from 'src/global/base-abstract.entity';
 import { Column, Entity, JoinTable, ManyToMany } from 'typeorm';
-import { Tenant } from '../../../models/tenant.entity';
+import { Role } from '../../roles/models/role.entity';
 
 @Entity()
-export class Theme extends BaseAbstractEntity {
+export class Permission extends BaseAbstractEntity {
   @Column()
   name: string;
 
   @Column()
   description: string;
 
-  @Column()
-  properties: string;
-
   @JoinTable()
-  @ManyToMany(type => Tenant)
-  tenant: Tenant;
+  @ManyToMany(type => Role)
+  role: Role;
 }
