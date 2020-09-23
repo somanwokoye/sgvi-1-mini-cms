@@ -26,7 +26,7 @@ export class User extends BaseAbstractEntity {
   @Column()
   isActive: boolean;
 
-  @Column()
+  @Column({ unique: true })
   primaryEmailAddress: string;
 
   @Column()
@@ -39,7 +39,7 @@ export class User extends BaseAbstractEntity {
   passwordHash: string;
 
   @Column()
-  sPasswordChangeRequired: boolean;
+  isPasswordChangeRequired: boolean;
 
   @Column()
   resetPasswordToken: string;
