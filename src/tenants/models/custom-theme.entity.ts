@@ -13,6 +13,9 @@ export class CustomTheme extends BaseAbstractEntity{
 
     @Column()
     properties: string
+
+    @Column("simple-json", {nullable: true})
+    bulmaProperties: {primaryColor: string, primaryBackground: string}
     
     @JoinColumn()
     @OneToOne(type => Tenant, tenant => tenant.customTheme)
