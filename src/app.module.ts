@@ -5,13 +5,15 @@ import { TenantsModule } from './tenants/tenants.module';
 //We need these to read our environment config variables
 //import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DatabaseModule } from './app.database.module';
-import * as Joi from '@hapi/joi';
+//import * as Joi from '@hapi/joi';
 import { ConfigModule } from '@nestjs/config';
 
 
 @Module({
   imports: [ TenantsModule, 
 
+    ConfigModule.forRoot(),
+    /* //Below Joi use is if I want to validate environment variables entry. Good idea
     ConfigModule.forRoot({
       validationSchema: Joi.object({
         POSTGRES_HOST: Joi.string().required(),
@@ -22,6 +24,7 @@ import { ConfigModule } from '@nestjs/config';
         PORT: Joi.number(),
       })
     }),
+    */
     DatabaseModule
   ],
   controllers: [AppController],

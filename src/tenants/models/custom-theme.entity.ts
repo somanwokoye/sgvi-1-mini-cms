@@ -18,7 +18,7 @@ export class CustomTheme extends BaseAbstractEntity{
     bulmaProperties: {primaryColor: string, primaryBackground: string}
     
     @JoinColumn()
-    @OneToOne(type => Tenant, tenant => tenant.customTheme)
+    @OneToOne(type => Tenant, tenant => tenant.customTheme, {onDelete: 'CASCADE'})
     tenant: Tenant
 
 }
