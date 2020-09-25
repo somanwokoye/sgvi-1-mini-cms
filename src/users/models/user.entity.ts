@@ -23,13 +23,13 @@ export class User extends BaseAbstractEntity {
   @Column()
   dateOfBirth: Date;
 
-  @Column()
+  @Column({ default: false })
   isActive: boolean;
 
   @Column({ unique: true })
   primaryEmailAddress: string;
 
-  @Column({ nullable: true })
+  @Column({ default: false })
   isPrimaryEmailAddressVerified: boolean;
 
   @Column({ nullable: true })

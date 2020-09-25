@@ -19,6 +19,7 @@ export class CreateUserDto extends CreateBaseAbstractDto {
   @IsNotEmpty()
   readonly dateOfBirth: Date;
 
+  @IsNotEmpty()
   readonly isActive: boolean;
 
   @IsEmail()
