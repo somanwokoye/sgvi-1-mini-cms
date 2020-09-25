@@ -1,5 +1,5 @@
 import { BaseAbstractEntity } from 'src/global/base-abstract.entity';
-import { Column, Entity, JoinColumn, ManyToMany, OneToOne } from 'typeorm';
+import { Column, Entity, ManyToMany, OneToOne } from 'typeorm';
 import { Profile } from './profile.entity';
 import { Role } from '../modules/roles/models/role.entity';
 
@@ -14,7 +14,7 @@ export class User extends BaseAbstractEntity {
   @Column()
   lastName: string;
 
-  @Column()
+  @Column({ nullable: true })
   commonName: string;
 
   @Column()
@@ -29,37 +29,37 @@ export class User extends BaseAbstractEntity {
   @Column({ unique: true })
   primaryEmailAddress: string;
 
-  @Column()
+  @Column({ nullable: true })
   isPrimaryEmailAddressVerified: boolean;
 
-  @Column()
+  @Column({ nullable: true })
   passwordSalt: string;
 
-  @Column()
+  @Column({ nullable: true })
   passwordHash: string;
 
-  @Column()
+  @Column({ nullable: true })
   isPasswordChangeRequired: boolean;
 
-  @Column()
+  @Column({ nullable: true })
   resetPasswordToken: string;
 
-  @Column()
+  @Column({ nullable: true })
   restPasswordExpiration: Date;
 
-  @Column()
+  @Column({ nullable: true })
   primaryEmailVerificationToken: string;
 
-  @Column()
+  @Column({ nullable: true })
   otpEnabled: boolean;
 
-  @Column()
+  @Column({ nullable: true })
   otpSecret: string;
 
-  @JoinColumn()
   @OneToOne(
     type => Profile,
     profile => profile.user,
+    { cascade: true },
   )
   profile: Profile;
 

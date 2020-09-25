@@ -1,5 +1,6 @@
 import { BaseAbstractEntity } from 'src/global/base-abstract.entity';
 import { Column, Entity, JoinTable, ManyToMany } from 'typeorm';
+import {} from '../../../models/user.entity';
 import { Role } from '../../roles/models/role.entity';
 
 @Entity()
