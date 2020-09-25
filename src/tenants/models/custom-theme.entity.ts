@@ -13,19 +13,6 @@ export class CustomTheme extends BaseAbstractEntity {
   @Column()
   properties: string;
 
-<<<<<<< HEAD
-    @Column()
-    properties: string
-
-    @Column("simple-json", {nullable: true})
-    bulmaProperties: {primaryColor: string, primaryBackground: string}
-    
-    @JoinColumn()
-    @OneToOne(type => Tenant, tenant => tenant.customTheme, {onDelete: 'CASCADE'})
-    tenant: Tenant
-
-}
-=======
   @JoinColumn()
   @OneToOne(
     type => Tenant,
@@ -33,4 +20,3 @@ export class CustomTheme extends BaseAbstractEntity {
   )
   tenant: Tenant;
 }
->>>>>>> fb1fe947cd704373ea46731bd93f3f8e4a680bfb

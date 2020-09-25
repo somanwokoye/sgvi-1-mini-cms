@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   Param,
+  ParseIntPipe,
   Post,
   Put,
 } from '@nestjs/common';
@@ -51,7 +52,7 @@ export class UsersController {
    */
 
   @Get(':id')
-  findOne(@Param('id') id: number): Promise<User> {
+  findOne(@Param('id', ParseIntPipe) id: number): Promise<User> {
     return this.usersService.findOne(id);
   }
 
@@ -64,7 +65,7 @@ export class UsersController {
 
   @Put(':id')
   partialUpdate(
-    @Param('id') id: number,
+    @Param('id', ParseIntPipe) id: number,
     @Body() updateUserDto: UpdateUserDto,
   ): Promise<UpdateResult> {
     return this.usersService.update1(id, updateUserDto);
@@ -86,7 +87,7 @@ export class UsersController {
    * Finds by a criterion (id in this case) and deletes. Returns void
    */
   @Delete(':id')
-  delete(@Param('id') id: number) {
+  delete(@Param('id', ParseIntPipe) id: number) {
     return this.usersService.delete(id);
   }
 }
