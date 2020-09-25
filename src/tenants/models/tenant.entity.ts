@@ -1,59 +1,71 @@
-import { BaseAbstractEntity } from "src/global/base-abstract.entity";
-import { Column, Entity, Generated, ManyToMany, OneToMany, OneToOne } from "typeorm";
-import { Billing } from "../modules/billings/models/billing.entity";
-import { CustomTheme } from "./custom-theme.entity";
-import { Theme } from "../modules/themes/models/theme.entity";
-
+import { BaseAbstractEntity } from 'src/global/base-abstract.entity';
+import {
+  Column,
+  Entity,
+  Generated,
+  ManyToMany,
+  OneToMany,
+  OneToOne,
+} from 'typeorm';
+import { Billing } from '../modules/billings/models/billing.entity';
+import { CustomTheme } from './custom-theme.entity';
+import { Theme } from '../modules/themes/models/theme.entity';
 
 @Entity()
-export class Tenant extends BaseAbstractEntity{
-    
-    @Generated("uuid")
-    uuid: string;
-    
-    @Column({unique: true})
-    code: string
+export class Tenant extends BaseAbstractEntity {
+  @Generated('uuid')
+  uuid: string;
 
-    @Column()
-    name: string
+  @Column({ unique: true })
+  code: string;
 
-    @Column()
-    contactFirstName: string
+  @Column()
+  name: string;
 
-    @Column()
-    contactLastName: string
+  @Column()
+  contactFirstName: string;
 
-    @Column()
-    contactTitle: string
+  @Column()
+  contactLastName: string;
 
-    @Column()
-    address: string
+  @Column()
+  contactTitle: string;
 
-    @Column()
-    email: string
+  @Column()
+  address: string;
 
-    @Column()
-    defaultURLSlug: string
+  @Column()
+  email: string;
 
-    @Column({nullable: true})
-    customURLSlug: string
+  @Column()
+  defaultURLSlug: string;
 
-    @Column()
-    dateOfRegistration: Date
+  @Column({ nullable: true })
+  customURLSlug: string;
 
-    @Column({default: false})
-    active: boolean
+  @Column()
+  dateOfRegistration: Date;
 
-    @OneToOne(type => CustomTheme, customTheme => customTheme.tenant, {cascade: true})
-    customTheme: CustomTheme
+  @Column({ default: false })
+  active: boolean;
 
-    @ManyToMany(type => Theme)
-    theme: Theme
+  @OneToOne(
+    type => CustomTheme,
+    customTheme => customTheme.tenant,
+    { cascade: true },
+  )
+  customTheme: CustomTheme;
 
-    @OneToMany(type => Billing, billing => billing.tenant)
-    billings: Billing[] //notice the array here
+  @ManyToMany(type => Theme)
+  theme: Theme;
 
-    /*Even though there is a relationship between tenant and everyother model,
+  @OneToMany(
+    type => Billing,
+    billing => billing.tenant,
+  )
+  billings: Billing[]; //notice the array here
+
+  /*Even though there is a relationship between tenant and everyother model,
     typeorm allows us to define many-to-one without one-to-many. But you can't 
     define one-to-many without many-to-one. Here, we shall define no relationship
     but put many-to-one in every other entity in relation to tenant.
