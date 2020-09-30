@@ -117,7 +117,10 @@
       //Below is one way to toggle and save in localStorage
       const theme = document.querySelector("#theme-link");
 
-      if ((window.matchMedia('(prefers-color-scheme: dark)').matches) || theme.getAttribute("href") == themeURLRoot + "/dark-theme.min.css") {
+      if ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) && theme.getAttribute("href") == themeURLRoot + "/sgvi-1-mini-cms.min.css") {
+        //alert('dark matches')
+        theme.href = themeURLRoot + "/light-theme.min.css";
+      }else if (theme.getAttribute("href") == themeURLRoot + "/dark-theme.min.css") {  
         // dark mode is on. Switch to light mode
         //alert('dark matches')
         theme.href = themeURLRoot + "/light-theme.min.css";
