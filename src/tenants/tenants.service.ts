@@ -6,7 +6,7 @@ import { CreateTenantDto } from './dto/create/create-tenant.dto';
 import { UpdateTenantDto } from './dto/update/update-tenant.dto';
 import { CustomTheme } from './models/custom-theme.entity';
 import { Tenant } from './models/tenant.entity';
-import { FindOneParams } from './validators/params.validator';
+//import { FindOneParams } from './validators/params.validator';
 
 @Injectable()
 export class TenantsService {
