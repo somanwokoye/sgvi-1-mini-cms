@@ -25,6 +25,10 @@
           {{'' if TenantsActive else 'href=/tenants/web'}}>
           Tenants Admin
         </a>
+        <a class="navbar-item {{'navbar-item-active' if UsersActive else ''}}"
+          {{'' if UsersActive else 'href=/users/web'}}>
+          Users Admin
+        </a>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
             General Admin
